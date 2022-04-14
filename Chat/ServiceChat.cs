@@ -24,7 +24,7 @@ namespace Chat
 
             nextId++;
 
-            SendMessage(user.Name + " подключился к чату.");
+            SendMessage(user.Name + " подключился к чату.", 0);
             users.Add(user);
 
             return user.ID;
@@ -36,11 +36,11 @@ namespace Chat
             if (user != null)
             {
                 users.Remove(user);
-                SendMessage(user.Name + " покинул чат.");
+                SendMessage(user.Name + " покинул чат.", 0);
             }
         }
 
-        public void SendMessage(string message)
+        public void SendMessage(string message, int id)
         {
             throw new NotImplementedException();
         }
