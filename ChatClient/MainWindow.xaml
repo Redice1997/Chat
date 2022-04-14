@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChatClient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded" Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -21,13 +21,15 @@
             <TextBox x:Name="tbUserName"
                      DockPanel.Dock="Left"                    
                      Margin="0,10,10,10" 
-                     Text="Имя пользователя"                     
+                     Text="Имя пользователя"
+                     MinWidth="200" Loaded="tbUserName_Loaded"
                      />
         </DockPanel>
         <DockPanel Grid.Row="1" LastChildFill="True">
-            <ListBox DockPanel.Dock="Top" MinHeight="250"
-                     Margin="10, 10, 10, 0"/>
-            <TextBox Margin="10, 10, 10, 10"/>
+            <ListBox x:Name="lbChat"
+                     DockPanel.Dock="Top" MinHeight="250"
+                     Margin="10, 0, 10, 0"/>
+            <TextBox x:Name="tbMessage" Margin="10, 10, 10, 10" KeyDown="tbMessage_KeyDown"/>
         </DockPanel>
     </Grid>
 </Window>
