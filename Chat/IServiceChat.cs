@@ -11,7 +11,20 @@ namespace Chat
     [ServiceContract]
     public interface IServiceChat
     {
+        [OperationContract] //Виден со стороны клиента
+        int Connect();
+
         [OperationContract]
-        void DoWork();
+        void Disconnect(int id);
+
+        [OperationContract(IsOneWay = true)]
+        void SendMessage(string message);
+
+    }
+
+    public interface IServerChatCallback
+    {
+        [OperationContract]
+        void MessageCallback(string message);
     }
 }
