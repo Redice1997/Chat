@@ -11,14 +11,33 @@ namespace Chat
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class ServiceChat : IServiceChat
     {
-        public int Connect()
+        List<ServerUser> users = new List<ServerUser>();
+        int nextId = 1;
+        public int Connect(string username)
         {
-            throw new NotImplementedException();
+            ServerUser user = new ServerUser()
+            {
+                ID = nextId,
+                Name = username,
+                operationContext = OperationContext.Current
+            };
+
+            nextId++;
+
+            SendMessage(user.Name + " подключился к чату.");
+            users.Add(user);
+
+            return user.ID;
         }
 
         public void Disconnect(int id)
         {
-            throw new NotImplementedException();
+            var user = users.FirstOrDefault(i => i.ID == id);
+            if (user != null)
+            {
+                users.Remove(user);
+                SendMessage(user.Name + " покинул чат.");
+            }
         }
 
         public void SendMessage(string message)

@@ -12,7 +12,7 @@ namespace Chat
     public interface IServiceChat
     {
         [OperationContract] //Виден со стороны клиента
-        int Connect();
+        int Connect(string username);
 
         [OperationContract]
         void Disconnect(int id);
