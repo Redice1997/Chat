@@ -42,7 +42,18 @@ namespace Chat
 
         public void SendMessage(string message, int id)
         {
-            throw new NotImplementedException();
+            foreach (var item in users)
+            {
+                string answer = DateTime.Now.ToShortTimeString();
+                var user = users.FirstOrDefault(i => i.ID == id);
+                if (user != null)
+                {
+                    answer += ": " + user.Name + " ";
+                }
+                answer += message;
+
+                item.operationContext.GetCallbackChannel<IServerChatCallback>().MessageCallback(answer);
+            }
         }
     }
 }
