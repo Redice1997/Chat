@@ -27,9 +27,10 @@
         </DockPanel>
         <DockPanel Grid.Row="1" LastChildFill="True">
             <ListBox x:Name="lbChat"
-                     DockPanel.Dock="Top" MinHeight="250"
+                     DockPanel.Dock="Top" Height="250"
                      Margin="10, 0, 10, 0"/>
-            <TextBox x:Name="tbMessage" Margin="10, 10, 10, 10" KeyDown="tbMessage_KeyDown"/>
+            <TextBox x:Name="tbMessage" Margin="10, 10, 10, 10" KeyDown="tbMessage_KeyDown"
+                     MinHeight="30"/>
         </DockPanel>
     </Grid>
 </Window>
